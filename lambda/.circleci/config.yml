@@ -1,0 +1,23 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: circleci/python:latest
+    steps:
+      - checkout
+      - run:
+          name: Install packages
+          command: |
+            sudo apt-get update && sudo apt-get install wget zip unzip openjdk-8-jdk -y
+            sudo pip install awscli
+      - run:
+          name: Build Artifact
+          command: |
+            cd lambda
+            ./gradlew build
+      - run:
+          name: Update Function Code
+          command: |
+            cp lambda/build/distributions/lambda.zip .
+            aws s3 cp lambda.zip s3://${BucketName}/lambda.zip
+            aws lambda update-function-code --function-name "csye6225-lambda" --zip-file  fileb://lambda.zip

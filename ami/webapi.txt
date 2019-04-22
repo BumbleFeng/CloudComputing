@@ -1,0 +1,11 @@
+[Unit]
+Description=webapi
+After=syslog.target
+
+[Service]
+User=webapi
+ExecStart=/var/webapi/webapi.jar
+SuccessExitStatus=143
+
+[Install]
+WantedBy=multi-user.target
