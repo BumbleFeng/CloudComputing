@@ -1,4 +1,6 @@
-#AWS Cloud Computing  
+# AWS Cloud Computing  
+
+![Architecture](https://raw.githubusercontent.com/BumbleFeng/CloudComputing/master/architecture.png)  
 
 * Developed a Spring Security enabled Spring Boot application with support for Bcrypt hashing scheme  
 * Automated creation of every AWS resource via bash scripts and AWS Cloudformation  
